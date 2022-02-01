@@ -12,6 +12,6 @@ class UserController extends Controller
     public function UserView()
     {
         $allDate = User::all();
-        return view('backend.user.user_view', compact('allData'));
+        return view('backend.user.user_view', compact('allDate'));
     }
 }
