@@ -14,4 +14,10 @@ class UserController extends Controller
         $allDate = User::all();
         return view('backend.user.user_view', compact('allDate'));
     }
+
+
+    public function UserAdd()
+    {
+        return view('backend.user.add_user');
+    }
 }
