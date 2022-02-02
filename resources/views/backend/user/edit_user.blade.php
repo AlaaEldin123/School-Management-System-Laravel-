@@ -12,7 +12,7 @@
                 <!-- Basic Forms -->
                 <div class="box">
                     <div class="box-header with-border">
-                        <h4 class="box-title">Edit User</h4>
+                        <h4 class="box-title">UpdateUser</h4>
 
                     </div>
                     <!-- /.box-header -->
@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col">
 
-                                <form method="post" action="{{ route('users.store') }}">
+                                <form method="post" action="{{ route('users.update', $editData->id) }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
@@ -93,7 +93,7 @@
 
 
                                         <div class="text-xs-right">
-                                            <input type="submit" class="btn btn-rounded btn-info mb-5" value="Submit">
+                                            <input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
                                         </div>
                                 </form>
 
