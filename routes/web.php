@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,12 @@ Route::prefix('user')->group(function () {
     Route::get('/edit/{id}', [UserController::class, 'UserEdit'])->name('users.edit');
     Route::post('/update/{id}', [UserController::class, 'UserUpdate'])->name('users.update');
     Route::get('/update/{id}', [UserController::class, 'UserDelete'])->name('users.delete');
+});
+
+/// user profile and change password
+
+Route::prefix('profile')->group(function () {
+
+
+    Route::get('/view', [ProfileController::class, 'ProfileView'])->name('profile.view');
 });
