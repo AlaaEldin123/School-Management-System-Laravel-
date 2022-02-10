@@ -110,7 +110,14 @@
                     </ul>
                 </li>
 
+
                 <!-- User Account-->
+                @php
+                    $user = DB::table('users')
+                        ->where('id', Auth::user()->id)
+                        ->first();
+                @endphp
+
                 <li class="dropdown user user-menu">
                     <a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown"
                         title="User">
