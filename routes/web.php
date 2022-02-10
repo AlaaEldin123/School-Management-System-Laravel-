@@ -33,7 +33,7 @@ Route::get('/admin/logout', [AdminController::class, 'Logout'])->name('admin.log
 
 
 
-Route::prefix('user')->group(function () {
+Route::prefix('users')->group(function () {
 
 
     Route::get('/view', [UserController::class, 'UserView'])->name('user.view');
