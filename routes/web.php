@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\backend\setup\StudentClassController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,4 +59,13 @@ Route::prefix('profile')->group(function () {
     Route::get('/password/view', [ProfileController::class, 'PasswordView'])->name('password.view');
 
     Route::post('/password/update', [ProfileController::class, 'PasswordUpdate'])->name('password.update');
+});
+
+
+
+
+Route::prefix('setups')->group(function () {
+
+
+    Route::get('student/class/view', [StudentClassController::class, 'StudentView'])->name('student.class.view');
 });
