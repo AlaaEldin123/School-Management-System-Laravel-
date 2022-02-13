@@ -1,6 +1,7 @@
 @extends('admin.admin_master')
 @section('admin')
 
+
     <div class="content-wrapper">
         <div class="container-full">
             <!-- Content Header (Page header) -->
@@ -11,13 +12,14 @@
                 <div class="row">
 
 
+
                     <div class="col-12">
 
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Student Class List</h3>
-                                <a href="{{ route('users.add') }}" class="btn btn-rounded btn-success mb-5"
-                                    style="float:right" ;>Add Student Class</a>
+                                <a href="{{ route('student.class.add') }}" style="float: right;"
+                                    class="btn btn-rounded btn-success mb-5"> Add Student Class</a>
 
                             </div>
                             <!-- /.box-header -->
@@ -27,34 +29,31 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%">SL</th>
-
                                                 <th>Name</th>
-
                                                 <th width="25%">Action</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($allDate as $key => $student)
-
-
+                                            @foreach ($allData as $key => $student)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-
-                                                    <td>{{ $student->name }}</td>
-
+                                                    <td> {{ $student->name }}</td>
                                                     <td>
-                                                        <a href="{{ route('student.edit', $user->id) }}"
-                                                            class="btn btn-info ">Edit</a>
-                                                        <a href="{{ route('student.delete', $user->id) }}" id="delete"
-                                                            class="btn btn-danger ">Delete </a>
+                                                        <a href="{{ route('student.class.edit', $student->id) }}"
+                                                            class="btn btn-info">Edit</a>
+                                                        <a href="{{ route('student.class.add', $student->id) }}"
+                                                            class="btn btn-danger" id="delete">Delete</a>
+
                                                     </td>
+
                                                 </tr>
-
-
                                             @endforeach
-                                        </tbody>
 
+                                        </tbody>
+                                        <tfoot>
+
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
@@ -63,7 +62,6 @@
                         <!-- /.box -->
 
 
-                        <!-- /.box -->
                     </div>
                     <!-- /.col -->
                 </div>
@@ -73,6 +71,8 @@
 
         </div>
     </div>
+
+
 
 
 
