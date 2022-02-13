@@ -43,7 +43,7 @@
                                                     <td>
                                                         <a href="{{ route('student.shift.edit', $shift->id) }}"
                                                             class="btn btn-info">Edit</a>
-                                                        <a href="{{ route('student.group.delete', $shift->id) }}"
+                                                        <a href="{{ route('student.shift.delete', $shift->id) }}"
                                                             class="btn btn-danger" id="delete">Delete</a>
 
                                                     </td>

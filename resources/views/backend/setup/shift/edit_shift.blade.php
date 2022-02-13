@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col">
 
-                                <form method="post" action="{{ route('update.student.group', $editData->id) }}">
+                                <form method="post" action="{{ route('update.student.shift', $editData->id) }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
