@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\backend\setup\StudentClassController;
+use App\Http\Controllers\Backend\setup\StudentYearController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -81,4 +82,14 @@ Route::prefix('setups')->group(function () {
     Route::post('student/class/update/{id}', [StudentClassController::class, 'StudentClassUpdate'])->name('update.student.class');
 
     Route::get('student/class/delete/{id}', [StudentClassController::class, 'StudentClassDelete'])->name('student.class.delete');
+
+
+    // Student Year Routes
+    Route::get('student/year/view', [StudentYearController::class, 'ViewYear'])->name('student.year.view');
+
+    Route::get('student/year/add', [StudentYearController::class, 'StudentYearAdd'])->name('student.year.add');
+
+    Route::post('student/year/store', [StudentYearController::class, 'StudentYearStore'])->name('store.student.year');
+
+    Route::get('student/year/edit/{id}', [StudentYearController::class, 'StudentYearEdit'])->name('student.year.edit');
 });
