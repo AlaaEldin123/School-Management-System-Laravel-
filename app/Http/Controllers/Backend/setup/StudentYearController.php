@@ -56,7 +56,6 @@ class StudentYearController extends Controller
 
         ]);
 
-
         $data->name = $request->name;
         $data->save();
 
