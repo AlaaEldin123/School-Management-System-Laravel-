@@ -46,4 +46,38 @@ class StudentGroupController extends Controller
         $editData = StudentGroup::find($id);
         return view('backend.setup.group.edit_group', compact('editData'));
     }
+
+    public function StudentGroupUpdate(Request $request, $id)
+    {
+        $data = StudentGroup::find($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|unique:student_groups,name,' . $data->id
+
+        ]);
+
+        $data->name = $request->name;
+        $data->save();
+
+        $notification = array(
+            'message' => 'Student Group Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('student.group.view')->with($notification);
+    }
+
+
+    public function StudentGroupDelete($id)
+    {
+        $data = StudentGroup::find($id);
+        $data->delete();
+
+        $notification = array(
+            'message' => 'Student Group Deleted Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('student.group.view')->with($notification);
+    }
 }

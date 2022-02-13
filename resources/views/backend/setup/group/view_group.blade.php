@@ -42,7 +42,7 @@
                                                     <td>
                                                         <a href="{{ route('student.group.edit', $group->id) }}"
                                                             class="btn btn-info">Edit</a>
-                                                        <a href="{{ route('student.year.delete', $group->id) }}"
+                                                        <a href="{{ route('student.group.delete', $group->id) }}"
                                                             class="btn btn-danger" id="delete">Delete</a>
 
                                                     </td>
