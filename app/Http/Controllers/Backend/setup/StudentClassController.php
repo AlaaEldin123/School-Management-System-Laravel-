@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend\setup;
 use App\Http\Controllers\Controller;
 use App\Models\StudentClass;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentClassController extends Controller
 {
