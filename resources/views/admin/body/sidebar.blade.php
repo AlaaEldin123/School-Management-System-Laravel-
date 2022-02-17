@@ -80,6 +80,10 @@ $route = Route::current()->getName();
                     </li>
 
 
+                    <li><a href="{{ route('fee.amount.view') }}"><i class="ti-more"></i>Fee Category
+                            Amount</a>
+                    </li>
+
                 </ul>
             </li>
 

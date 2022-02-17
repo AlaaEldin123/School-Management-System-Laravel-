@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\setup\FeeAmountController;
 use App\Http\Controllers\Backend\setup\FeeCategoryController;
 use App\Http\Controllers\backend\setup\StudentClassController;
 use App\Http\Controllers\Backend\setup\StudentGroupController;
@@ -142,4 +143,12 @@ Route::prefix('setups')->group(function () {
     Route::post('fee/category/update/{id}', [FeeCategoryController::class, 'FeeCatUpdate'])->name('update.fee.category');
 
     Route::get('fee/category/delete/{id}', [FeeCategoryController::class, 'FeeCatDelete'])->name('fee.category.delete');
+
+
+
+    ////////////// Fee Categories Amount  Routes //////////////
+
+    Route::get('fee/amount/view', [FeeAmountController::class, 'ViewFeeAmount'])->name('fee.amount.view');
+
+    Route::get('fee/amount/add', [FeeAmountController::class, 'AddFeeAmount'])->name('fee.category.add');
 });
