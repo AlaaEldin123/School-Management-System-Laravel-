@@ -33,7 +33,8 @@
                                                     <td>{{ $key + 1 }}</td>
                                                     <td> {{ $amount['fee_category']['name'] }}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-info">Edit</a>
+                                                        <a href="{{ route('fee.amount.edit', $amount->fee_category_id) }}"
+                                                            class="btn btn-info">Edit</a>
                                                         <a href="" class="btn btn-danger" id="delete">Delete</a>
 
                                                     </td>
