@@ -84,6 +84,9 @@ $route = Route::current()->getName();
                             Amount</a>
                     </li>
 
+                    <li><a href="{{ route('exam.type.view') }}"><i class="ti-more"></i>
+                            Exam Type</a>
+                    </li>
                 </ul>
             </li>
 
