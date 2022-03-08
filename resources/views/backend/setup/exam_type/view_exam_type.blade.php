@@ -38,9 +38,9 @@
                                                     <td>{{ $key + 1 }}</td>
                                                     <td> {{ $exam->name }}</td>
                                                     <td>
-                                                        <a href="{{ route('fee.category.edit', $exam->id) }}"
+                                                        <a href="{{ route('exam.type.edit', $exam->id) }}"
                                                             class="btn btn-info">Edit</a>
-                                                        <a href="{{ route('fee.category.delete', $exam->id) }}"
+                                                        <a href="{{ route('exam.type.delete', $exam->id) }}"
                                                             class="btn btn-danger" id="delete">Delete</a>
 
                                                     </td>
