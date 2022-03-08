@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\setup\ExamTypeController;
 use App\Http\Controllers\Backend\setup\FeeAmountController;
 use App\Http\Controllers\Backend\setup\FeeCategoryController;
+use App\Http\Controllers\Backend\setup\SchoolSubjectController;
 use App\Http\Controllers\backend\setup\StudentClassController;
 use App\Http\Controllers\Backend\setup\StudentGroupController;
 use App\Http\Controllers\Backend\setup\StudentShiftController;
@@ -169,6 +170,24 @@ Route::prefix('setups')->group(function () {
     Route::get('exam/type/add', [ExamTypeController::class, 'ExamTypeAdd'])->name('exam.type.add');
 
     Route::post('exam/type/store', [ExamTypeController::class, 'ExamTypeStore'])->name('store.exam.type');
+
+    Route::get('exam/type/edit/{id}', [ExamTypeController::class, 'ExamTypeEdit'])->name('exam.type.edit');
+
+    Route::post('exam/type/update/{id}', [ExamTypeController::class, 'ExamTypeUpdate'])->name('update.exam.type');
+
+    Route::get('exam/type/delete/{id}', [ExamTypeController::class, 'ExamTypeDelete'])->name('exam.type.delete');
+
+
+
+
+    ////////////// School Subject Routes //////////////
+
+
+    Route::get('school/subject/view', [SchoolSubjectController::class, 'ViewSubject'])->name('school.subject.view');
+
+    Route::get('school/subject/add', [SchoolSubjectController::class, 'SubjectAdd'])->name('school.subject.add');
+
+    Route::post('school/subject/store', [SchoolSubjectController::class, 'SubjectStore'])->name('store.school.subject');
 
     Route::get('exam/type/edit/{id}', [ExamTypeController::class, 'ExamTypeEdit'])->name('exam.type.edit');
 
