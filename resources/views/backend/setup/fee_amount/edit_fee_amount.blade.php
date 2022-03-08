@@ -19,7 +19,8 @@
                         <div class="row">
                             <div class="col">
 
-                                <form method="post" action="{{ route('store.fee.amount') }}">
+                                <form method="post"
+                                    action="{{ route('update.fee.amount', $editData[0]->fee_category_id) }}">
                                     @csrf
                                     <div class="row">
                                         <div class="col-12">
@@ -110,7 +111,7 @@
 
 
                                             <div class="text-xs-right">
-                                                <input type="submit" class="btn btn-rounded btn-info mb-5" value="Udate">
+                                                <input type="submit" class="btn btn-rounded btn-info mb-5" value="Update">
                                             </div>
                                         </div>
                                     </div>

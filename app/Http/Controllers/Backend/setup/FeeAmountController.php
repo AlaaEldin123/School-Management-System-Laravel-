@@ -9,6 +9,7 @@ use App\Models\StudentClass;
 use App\Models\StudentYear;
 use BaconQrCode\Renderer\Color\Rgb;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Null_;
 
 class FeeAmountController extends Controller
 {
@@ -57,4 +58,37 @@ class FeeAmountController extends Controller
         $data['classess'] =   StudentClass::all();
         return view('backend.setup.fee_amount.edit_fee_amount', $data);
     }
+
+    public function UpdateFeeAmount(Request $request, $fee_category_id)
+    {
+        if ($request->class_id == NULL) {
+
+            $notification = array(
+                'message' => 'Sorry You do not select any class amount',
+                'alert-type' => 'error'
+            );
+
+            return redirect()->route('fee.amount.edit', $fee_category_id)->with($notification);
+        } else {
+
+            $countClass = count($request->class_id);
+            FeeCategoryAmount::where('fee_category_id', $fee_category_id)->delete();
+            for ($i = 0; $i < $countClass; $i++) {
+                $fee_amount = new FeeCategoryAmount();
+                $fee_amount->fee_category_id = $request->fee_category_id;
+                $fee_amount->class_id = $request->class_id[$i];
+                $fee_amount->amount = $request->amount[$i];
+                $fee_amount->save();
+            } // End For Loop
+
+        } // end Else
+
+        $notification = array(
+            'message' => 'Data Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('fee.amount.view')->with($notification);
+    } // end Method
+
 }
