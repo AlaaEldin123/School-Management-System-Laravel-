@@ -94,6 +94,9 @@ $route = Route::current()->getName();
                     </li>
 
 
+                    <li><a href="{{ route('assign.subject.view') }}"><i class="ti-more"></i>
+                            Assign Subject</a>
+                    </li>
                 </ul>
             </li>
 
