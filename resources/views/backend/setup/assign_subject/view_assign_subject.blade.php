@@ -11,7 +11,7 @@
                         <div class="box">
                             <div class="box-header with-border">
                                 <h3 class="box-title">Assign Subject Amount List</h3>
-                                <a href="{{ route('fee.amount.add') }}" style="float: right;"
+                                <a href="{{ route('assign.subject.add') }}" style="float: right;"
                                     class="btn btn-rounded btn-success mb-5"> Add Assign Subject</a>
 
                             </div>
