@@ -2,15 +2,20 @@
 @section('admin')
     <div class="content-wrapper">
         <div class="container-full">
+            <!-- Content Header (Page header) -->
 
+
+            <!-- Main content -->
             <section class="content">
                 <div class="row">
+
+
 
                     <div class="col-12">
 
                         <div class="box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Assign Subject Amount List</h3>
+                                <h3 class="box-title">Assign Subject List</h3>
                                 <a href="{{ route('assign.subject.add') }}" style="float: right;"
                                     class="btn btn-rounded btn-success mb-5"> Add Assign Subject</a>
 
@@ -31,13 +36,15 @@
                                             @foreach ($allData as $key => $assign)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td> {{ $assign->id }}</td>
+                                                    <td> {{ $assign['student_class']['name'] }}</td>
+
                                                     <td>
-                                                        <a href="" class="btn btn-info">Edit</a>
-                                                        <a href="" class="btn btn-primary">Details</a>
+                                                        <a href="{{ route('assign.subject.edit', $assign->class_id) }}"
+                                                            class="btn btn-info">Edit</a>
+                                                        <a href="{{ route('assign.subject.details', $assign->class_id) }}"
+                                                            class="btn btn-primary">Details</a>
 
                                                     </td>
-
                                                 </tr>
                                             @endforeach
 
