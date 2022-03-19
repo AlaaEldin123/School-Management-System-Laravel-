@@ -11,8 +11,8 @@ use App\Http\Controllers\backend\setup\StudentClassController;
 use App\Http\Controllers\Backend\setup\StudentGroupController;
 use App\Http\Controllers\Backend\setup\StudentShiftController;
 use App\Http\Controllers\Backend\setup\StudentYearController;
-
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\DesignationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -211,4 +211,19 @@ Route::prefix('setups')->group(function () {
     Route::post('assign/subject/update/{class_id}', [AssignSubjectController::class, 'UpdateAssignSubject'])->name('update.assign.subject');
 
     Route::get('assign/subject/details/{class_id}', [AssignSubjectController::class, 'DetailsAssignSubject'])->name('assign.subject.details');
+
+
+    // Designation All Routes
+
+    Route::get('designation/view', [DesignationController::class, 'ViewDesignation'])->name('designation.view');
+
+    Route::get('designation/add', [DesignationController::class, 'DesignationAdd'])->name('designation.add');
+
+    Route::post('designation/store', [DesignationController::class, 'DesignationStore'])->name('store.designation');
+
+    Route::get('designation/edit/{id}', [DesignationController::class, 'DesignationEdit'])->name('designation.edit');
+
+    Route::post('designation/update/{id}', [DesignationController::class, 'DesignationUpdate'])->name('update.designation');
+
+    Route::get('designation/delete/{id}', [DesignationController::class, 'DesignationDelete'])->name('designation.delete');
 });
