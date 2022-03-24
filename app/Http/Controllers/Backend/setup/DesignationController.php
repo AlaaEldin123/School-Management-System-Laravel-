@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend\Setup;
 
-use App\Models\Designation;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Designation;
 
 class DesignationController extends Controller
 {
@@ -13,10 +14,13 @@ class DesignationController extends Controller
         return view('backend.setup.designation.view_designation', $data);
     }
 
+
     public function DesignationAdd()
     {
         return view('backend.setup.designation.add_designation');
     }
+
+
     public function DesignationStore(Request $request)
     {
 
@@ -36,11 +40,15 @@ class DesignationController extends Controller
 
         return redirect()->route('designation.view')->with($notification);
     }
+
+
+
     public function DesignationEdit($id)
     {
         $editData = Designation::find($id);
         return view('backend.setup.designation.edit_designation', compact('editData'));
     }
+
 
     public function DesignationUpdate(Request $request, $id)
     {
