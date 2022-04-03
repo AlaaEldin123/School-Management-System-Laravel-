@@ -23,6 +23,10 @@ class StudentRegController extends Controller
 
     public function StudentRegAdd()
     {
-        return view('backend.student.student_reg.student_add');
+        $data['years'] = StudentYear::all();
+        $data['classes'] = StudentClass::all();
+        $data['groups'] = StudentGroup::all();
+        $data['shifts'] = StudentShift::all();
+        return view('backend.student.student_reg.student_add', $data);
     }
 }
