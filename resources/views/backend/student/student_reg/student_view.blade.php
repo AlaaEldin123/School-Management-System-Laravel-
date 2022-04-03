@@ -28,6 +28,7 @@
                                             <tr>
                                                 <th width="5%">SL</th>
                                                 <th>Name</th>
+                                                <th>ID NO</th>
                                                 <th width="25%">Action</th>
 
                                             </tr>
@@ -39,10 +40,8 @@
                                                     <td> {{ $value->class_id }}</td>
                                                     <td> {{ $value->year_id }}</td>
                                                     <td>
-                                                        <a href="{{ route('student.year.edit', $year->id) }}"
-                                                            class="btn btn-info">Edit</a>
-                                                        <a href="{{ route('student.year.delete', $year->id) }}"
-                                                            class="btn btn-danger" id="delete">Delete</a>
+                                                        <a href="" class="btn btn-info">Edit</a>
+                                                        <a href="" class="btn btn-danger" id="delete">Delete</a>
 
                                                     </td>
 
