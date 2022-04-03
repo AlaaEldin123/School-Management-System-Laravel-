@@ -12,6 +12,7 @@ use App\Models\StudentYear;
 use App\Models\StudentClass;
 use App\Models\StudentGroup;
 use App\Models\StudentShift;
+use DB;
 
 class StudentRegController extends Controller
 {
@@ -30,7 +31,33 @@ class StudentRegController extends Controller
         return view('backend.student.student_reg.student_add', $data);
     }
 
-    public function StudentRegStore()
+    public function StudentRegStore(Request $request)
     {
+        DB::transaction(function() use($request){
+    	$checkYear = StudentYear::find($request->year_id)->name;
+    	$student = User::where('usertype','Student')->orderBy('id','DESC')->first();
+
+    	if ($student == null) {
+    		$firstReg = 0;
+    		$studentId = $firstReg+1;
+    		if ($studentId < 10) {
+    			$id_no = '000'.$studentId;
+    		}elseif ($studentId < 100) {
+    			$id_no = '00'.$studentId;
+    		}elseif ($studentId < 1000) {
+    			$id_no = '0'.$studentId;
+    		}
+    	}else{
+     $student = User::where('usertype','Student')->orderBy('id','DESC')->first()->id;
+     	$studentId = $student+1;
+     	if ($studentId < 10) {
+    			$id_no = '000'.$studentId;
+    		}elseif ($studentId < 100) {
+    			$id_no = '00'.$studentId;
+    		}elseif ($studentId < 1000) {
+    			$id_no = '0'.$studentId;
+    		}
+
+    	} // end else
     }
 }
