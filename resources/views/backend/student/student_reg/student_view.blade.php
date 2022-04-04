@@ -34,8 +34,9 @@
                                                     <option value="" selected="" disabled="">Select Year
                                                     </option>
                                                     @foreach ($years as $year)
-                                                        <option value="{{ $year->id }}">{{ $year->name }}
-                                                        </option>
+                                                        <option value="{{ $year->id }}"
+                                                            {{ @$year_id == $year->id ? 'selected' : '' }}>
+                                                            {{ $year->name }}</option>
                                                     @endforeach
 
                                                 </select>
@@ -53,8 +54,9 @@
                                                     <option value="" selected="" disabled="">Select Class
                                                     </option>
                                                     @foreach ($classes as $class)
-                                                        <option value="{{ $class->id }}">{{ $class->name }}
-                                                        </option>
+                                                        <option value="{{ $class->id }}"
+                                                            {{ @$class_id == $class->id ? 'selected' : '' }}>
+                                                            {{ $class->name }}</option>
                                                     @endforeach
 
                                                 </select>
@@ -98,7 +100,14 @@
                                             <tr>
                                                 <th width="5%">SL</th>
                                                 <th>Name</th>
-                                                <th>ID NO</th>
+                                                <th>ID No</th>
+                                                <th>Roll</th>
+                                                <th>Year</th>
+                                                <th>Class</th>
+                                                <th>Image</th>
+                                                @if (Auth::user()->role == 'Admin')
+                                                    <th>Code</th>
+                                                @endif>
                                                 <th width="25%">Action</th>
 
                                             </tr>
@@ -107,11 +116,25 @@
                                             @foreach ($allData as $key => $value)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td> {{ $value->class_id }}</td>
+                                                    <td> {{ $value['student']['name'] }}</td>
+                                                    <td> {{ $value['student']['id_no'] }}</td>
+                                                    <td> {{ $value->roll }} </td>
+                                                    <td> {{ $value['student_year']['name'] }}</td>
+                                                    <td> {{ $value['student_class']['name'] }}</td>
+                                                    <td>
+                                                        <img src="{{ !empty($value['student']['image'])? url('upload/student_images/' . $value['student']['image']): url('upload/no_image.jpg') }}"
+                                                            style="width: 60px; width: 60px;">
+                                                    </td>
                                                     <td> {{ $value->year_id }}</td>
                                                     <td>
-                                                        <a href="" class="btn btn-info">Edit</a>
-                                                        <a href="" class="btn btn-danger" id="delete">Delete</a>
+                                                        <a title="Edit" href="" class="btn btn-info"> <i
+                                                                class="fa fa-edit"></i> </a>
+
+                                                        <a title="Promotion" href="" class="btn btn-primary"><i
+                                                                class="fa fa-check"></i></a>
+
+                                                        <a target="_blank" title="Details" href="" class="btn btn-danger"><i
+                                                                class="fa fa-eye"></i></a>
 
                                                     </td>
 

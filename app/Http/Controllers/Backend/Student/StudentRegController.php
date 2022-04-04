@@ -12,7 +12,7 @@ use App\Models\StudentYear;
 use App\Models\StudentClass;
 use App\Models\StudentGroup;
 use App\Models\StudentShift;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class StudentRegController extends Controller
 {
@@ -21,6 +21,8 @@ class StudentRegController extends Controller
         $data['years'] = StudentYear::all();
         $data['classes'] = StudentClass::all();
         $data['allData'] = AssignStudent::all();
+        $data['year_id'] = StudentYear::orderBy('id', 'desc')->first()->id;
+        $data['class_id'] = StudentClass::orderBy('id', 'desc')->first()->id;
         return view('backend.student.student_reg.student_view', $data);
     }
 
