@@ -132,8 +132,9 @@
                                                         </td>
                                                         <td> {{ $value->year_id }}</td>
                                                         <td>
-                                                            <a title="Edit" href="" class="btn btn-info"> <i
-                                                                    class="fa fa-edit"></i> </a>
+                                                            <a title="Edit"
+                                                                href="{{ route('student.registration.edit', $value->student_id) }}"
+                                                                class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 
                                                             <a title="Promotion" href="" class="btn btn-primary"><i
                                                                     class="fa fa-check"></i></a>
@@ -184,8 +185,9 @@
                                                         </td>
                                                         <td> {{ $value->year_id }}</td>
                                                         <td>
-                                                            <a title="Edit" href="" class="btn btn-info"> <i
-                                                                    class="fa fa-edit"></i> </a>
+                                                            <a title="Edit"
+                                                                href="{{ route('student.registration.edit', $value->student_id) }}"
+                                                                class="btn btn-info"> <i class="fa fa-edit"></i> </a>
 
                                                             <a title="Promotion" href="" class="btn btn-primary"><i
                                                                     class="fa fa-check"></i></a>
