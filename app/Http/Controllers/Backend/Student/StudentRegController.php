@@ -143,6 +143,6 @@ class StudentRegController extends Controller
         $data['shifts'] = StudentShift::all();
 
         $data['editData'] = AssignStudent::with(['student', 'discount'])->where('student_id', $student_id)->first();
-        return view('backend.student.student_reg.student_promotion', $data);
+        return view('backend.student.student_reg.student_edit', $data);
     }
 }
