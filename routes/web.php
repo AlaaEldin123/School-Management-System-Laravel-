@@ -12,6 +12,7 @@ use App\Http\Controllers\backend\setup\StudentClassController;
 use App\Http\Controllers\Backend\setup\StudentGroupController;
 use App\Http\Controllers\Backend\setup\StudentShiftController;
 use App\Http\Controllers\Backend\setup\StudentYearController;
+use App\Http\Controllers\Backend\Student\RegistrationFeeController;
 use App\Http\Controllers\Backend\Student\StudentRegController;
 use App\Http\Controllers\Backend\Student\StudentRollController;
 use App\Http\Controllers\Backend\UserController;
@@ -260,4 +261,9 @@ Route::prefix('students')->group(function () {
     Route::get('/reg/getstudents', [StudentRollController::class, 'GetStudents'])->name('student.registration.getstudents');
 
     Route::post('/roll/generate/store', [StudentRollController::class, 'StudentRollStore'])->name('roll.generate.store');
+
+
+
+    // Registration Fee Routes
+    Route::get('/reg/fee/view', [RegistrationFeeController::class, 'RegFeeView'])->name('registration.fee.view');
 });
