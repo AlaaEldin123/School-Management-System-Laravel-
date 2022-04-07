@@ -1,7 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 
     <div class="content-wrapper">
         <div class="container-full">
@@ -20,7 +19,6 @@
                             </div>
 
                             <div class="box-body">
-
 
                                 <div class="row">
 
@@ -54,7 +52,8 @@
                                                 <select name="class_id" id="class_id" required="" class="form-control">
                                                     <option value="" selected="" disabled="">Select Class</option>
                                                     @foreach ($classes as $class)
-                                                        <option value="{{ $class->id }}">{{ $class->name }}</option>
+                                                        <option value="{{ $class->id }}">{{ $class->name }}
+                                                        </option>
                                                     @endforeach
 
                                                 </select>
@@ -78,35 +77,33 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div id="DocumentResults">
-
                                             <script id="document-template" type="text/x-handlebars-template">
 
                                                 <table class="table table-bordered table-striped" style="width: 100%">
-                                             	<thead>
-                                             		<tr>
-                                                    @{{ {
+                                                                                                                                                                                        <thead>
+                                                                                                                                                                                            <tr>
+                                                                                                                                                                                           @{{ {
     thsource }}}
-                                             		</tr>
-                                             	 </thead>
-                                             	 <tbody>
-                                             	 	@{{ #each this }}
-                                             	 	<tr>
-                                             	 		@{{ {
+                                                                                                                                                                                            </tr>
+                                                                                                                                                                                         </thead>
+                                                                                                                                                                                         <tbody>
+                                                                                                                                                                                             @{{ #each this }}
+                                                                                                                                                                                             <tr>
+                                                                                                                                                                                                 @{{ {
     tdsource }}}
-                                             	 	</tr>
-                                             	 	@{{ /each }}
-                                             	 </tbody>
-                                             	</table>
-                                                </script>
+                                                                                                                                                                                             </tr>
+                                                                                                                                                                                             @{{ /each }}
+                                                                                                                                                                                         </tbody>
+
+                                            </script>
 
 
 
                                         </div>
+
                                     </div>
 
                                 </div>
-
-
 
 
                             </div>
@@ -125,19 +122,29 @@
             var year_id = $('#year_id').val();
             var class_id = $('#class_id').val();
             $.ajax({
-                url: "{{ route('student.registration.fee.classwise.get') }}",
-                type: "get",
+                url: "{{ route('student.registration.getstudents') }}",
+                type: "GET",
                 data: {
                     'year_id': year_id,
                     'class_id': class_id
                 },
-                beforeSend: function() {},
                 success: function(data) {
-                    var source = $("#document-template").html();
-                    var template = Handlebars.compile(source);
-                    var html = template(data);
-                    $('#DocumentResults').html(html);
-                    $('[data-toggle="tooltip"]').tooltip();
+                    $('#roll-generate').removeClass('d-none');
+                    var html = '';
+                    $.each(data, function(key, v) {
+                        html +=
+                            '<tr>' +
+                            '<td>' + v.student.id_no +
+                            '<input type="hidden" name="student_id[]" value="' + v.student_id +
+                            '"></td>' +
+                            '<td>' + v.student.name + '</td>' +
+                            '<td>' + v.student.fname + '</td>' +
+                            '<td>' + v.student.gender + '</td>' +
+                            '<td><input type="text" class="form-control form-control-sm" name="roll[]" value="' +
+                            v.roll + '"></td>' +
+                            '</tr>';
+                    });
+                    html = $('#roll-generate-tr').html(html);
                 }
             });
         });
